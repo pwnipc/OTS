@@ -8,23 +8,23 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
-public class SignupActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     //variables
-    Button callSignin;
+    Button callSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //This line will hide the status bar from the screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_login_acivity);
 
-        callSignin = findViewById(R.id.login);
+        callSignUp = findViewById(R.id.login);
 
-        callSignin.setOnClickListener(new View.OnClickListener() {
+        callSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intent);
             }
         });
