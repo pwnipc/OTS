@@ -11,7 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SplashScreenActivity extends AppCompatActivity {
+public class SplashscreenActivity extends AppCompatActivity {
 
     //variables
     Animation topAnim, bottomAnim;
@@ -41,7 +41,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashscreenActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
