@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1011038110110",
+    "firebase_url": "https://online-thrift-shop-default-rtdb.firebaseio.com",
     "project_id": "online-thrift-shop",
     "storage_bucket": "online-thrift-shop.appspot.com"
   },
