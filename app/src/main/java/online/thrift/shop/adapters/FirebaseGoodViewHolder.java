@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.parceler.Parcels;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import online.thrift.shop.R;
@@ -45,15 +46,31 @@ public class FirebaseGoodViewHolder  extends RecyclerView.ViewHolder implements 
         TextView priceTextView = (TextView) mView.findViewById(R.id.PriceTextView);
         TextView LocationTextView = (TextView) mView.findViewById(R.id.LocationtextView);
 
-        Bitmap imageBitmap = decodeFromFirebaseBase64(good.getImageEncoded());
-        goodImageView.setImageBitmap(imageBitmap);
+      if (!good.getImageEncoded().contains("http")){
+
+          try {
+              Bitmap imageBitmap = decodeFromFirebaseBase64(good.getImageEncoded());
+              goodImageView.setImageBitmap(imageBitmap);
+          } catch (IOException e){
+              e.printStackTrace();
+          }
+      }else {
+
+          nameTextView.setText(good.getName());
+          priceTextView.setText(good.getPrice());
+          LocationTextView.setText(good.getLocation());
+
+      }
+
+
+
         nameTextView.setText(good.getName());
         priceTextView.setText(good.getPrice());
         LocationTextView.setText(good.getLocation());
 
     }
 
-    public static Bitmap decodeFromFirebaseBase64(String imageEncoded) {
+    public static Bitmap decodeFromFirebaseBase64(String imageEncoded) throws IOException {
 
         byte[] decodedByteArray = android.util.Base64.decode(imageEncoded, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(decodedByteArray,0,decodedByteArray.length);
