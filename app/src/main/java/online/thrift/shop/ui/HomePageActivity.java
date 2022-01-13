@@ -17,20 +17,15 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import online.thrift.shop.LoginActivity;
 import online.thrift.shop.R;
-import online.thrift.shop.SellActivity;
 import online.thrift.shop.adapters.FirebaseGoodViewHolder;
-import online.thrift.shop.adapters.goodsListAdapter;
 import online.thrift.shop.models.Item;
-import online.thrift.shop.models.good;
 
 public class HomePageActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -62,7 +57,15 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         logout.setOnClickListener(this);
         home.setOnClickListener(this);
 
-        mItemReference = FirebaseDatabase.getInstance().getReference("items");
+//        mItemReference = FirebaseDatabase.getInstance().getReference("items");
+//        setUpFirebaseAdapter();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        mItemReference = FirebaseDatabase
+                .getInstance()
+                .getReference("items")
+                .child(uid);
         setUpFirebaseAdapter();
 
 

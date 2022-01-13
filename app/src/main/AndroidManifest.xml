@@ -23,17 +23,17 @@
         <activity
             android:name=".ui.HomePageActivity"
             android:exported="false" />
-      
+
          <activity
-            android:name=".SellActivity"
+            android:name=".ui.SellActivity"
             android:exported="false" />
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:exported="false" />
 
         <activity
-            android:name=".SignupActivity"
+            android:name=".ui.SignupActivity"
             android:exported="false" />
 
         <meta-data

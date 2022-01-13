@@ -6,7 +6,12 @@
     android:layout_height="match_parent"
     android:background="#070707"
     android:orientation="vertical"
+<<<<<<< HEAD
     tools:context=".SignupActivity">
+=======
+    android:background="#fff"
+    tools:context=".ui.SignupActivity">
+>>>>>>> 9a992cb33976538f30a6d58d20c168b4ea1a6b2f
 
 
     <ImageView
