@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
+    tools:context=".SplashscreenActivity"
+=======
     tools:context=".ui.SplashScreenActivity"
+>>>>>>> 56255ae2527aaef212397064e4dec7777a51d1c2
     android:background="#fece2f">
 
     <ImageView
