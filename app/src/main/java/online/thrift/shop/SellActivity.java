@@ -24,6 +24,7 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import online.thrift.shop.models.Item;
+import online.thrift.shop.ui.HomePageActivity;
 
 public class SellActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int REQUEST_IMAGE_CAPTURE = 111;
@@ -100,6 +101,8 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
             pushRef.setValue(item);
 
             Toast.makeText(SellActivity.this, "Item Posted Successfully", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(SellActivity.this, HomePageActivity.class);
+            startActivity(intent);
         }
     }
 }
