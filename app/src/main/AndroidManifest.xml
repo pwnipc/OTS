@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineThriftShopOTS">
         <activity
-            android:name=".SplashscreenActivity"
+            android:name=".ui.SplashscreenActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

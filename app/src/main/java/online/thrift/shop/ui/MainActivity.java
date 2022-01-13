@@ -11,16 +11,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-<<<<<<< HEAD:app/src/main/java/online/thrift/shop/SplashscreenActivity.java
-public class SplashscreenActivity extends AppCompatActivity {
-=======
 import online.thrift.shop.R;
 
-public class SplashScreenActivity extends AppCompatActivity {
->>>>>>> 56255ae2527aaef212397064e4dec7777a51d1c2:app/src/main/java/online/thrift/shop/ui/SplashScreenActivity.java
+public class MainActivity extends AppCompatActivity {
 
     //variables
-    Animation topAnim, bottomAnim;
+    Animation topAnim, bottomAnim, middleAnim;
     ImageView image;
     TextView logo, slogan;
 
@@ -41,17 +37,16 @@ public class SplashScreenActivity extends AppCompatActivity {
         slogan = findViewById(R.id.textView2);
 
         image.setAnimation(topAnim);
-        logo.setAnimation(bottomAnim);
         slogan.setAnimation(bottomAnim);
+        logo.setAnimation(bottomAnim);
 
-        //Handler
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashscreenActivity.this, LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
                 startActivity(intent);
                 finish();
             }
-        }, 5000);
+        }, 4000);
     }
 }

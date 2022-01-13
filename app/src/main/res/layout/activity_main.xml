@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".MainActivity"
     android:background="#fece2f">
 
@@ -33,6 +34,9 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="488dp"
         tools:ignore="MissingConstraints" />
+=======
+    tools:context=".ui.MainActivity">
+>>>>>>> 56255ae2527aaef212397064e4dec7777a51d1c2
 
     <TextView
         android:id="@+id/textView2"

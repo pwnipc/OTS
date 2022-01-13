@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SellActivity">
+
+    <ImageView
+        android:id="@+id/imageViewPhotoAdd"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@drawable/add_a_photo"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="11dp" />
+
+    <EditText
+        android:id="@+id/editTextItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewPhotoAdd"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="2dp"
+        android:ems="10"
+        android:hint="Item Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextItemPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewPhotoAdd"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="2dp"
+        android:layout_toLeftOf="@id/editTextItemName"
+        android:ems="10"
+        android:hint="Item Price"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/editTextItemName"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:hint="Item Description"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextDescription"
+        android:layout_alignParentLeft="true"
+        android:ems="10"
+        android:gravity="left"
+        android:hint="Seller Phone"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/editTextLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextDescription"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:gravity="left"
+        android:hint="Seller Location"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/buttonItemPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Post Item" />
+
+
+</RelativeLayout>
