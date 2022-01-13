@@ -1,22 +1,29 @@
 package online.thrift.shop.models;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Item {
+
     private String imageEncoded;
-    private String name;
+    private String  name;
     private String price;
-    private String description;
-    private int phone_number;
+    private String  description;
+    private String phoneNumber;
     private String location;
 
-    private String pushId;
+    public Item(String imageEncoded, String name, String price, String description, String phoneNumber, String location) {
 
-    public Item(String imageEncoded, String name, String price, String description, int phone_number, String location) {
         this.imageEncoded = imageEncoded;
         this.name = name;
         this.price = price;
         this.description = description;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
         this.location = location;
+    }
+
+    public Item(){
+        
     }
 
     public String getImageEncoded() {
@@ -51,12 +58,12 @@ public class Item {
         this.description = description;
     }
 
-    public int getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(int phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getLocation() {
@@ -65,13 +72,5 @@ public class Item {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public String getPushId() {
-        return pushId;
-    }
-
-    public void setPushId(String pushId) {
-        this.pushId = pushId;
     }
 }
