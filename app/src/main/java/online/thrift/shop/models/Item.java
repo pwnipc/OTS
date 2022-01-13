@@ -11,6 +11,7 @@ public class Item {
     private String  description;
     private String phoneNumber;
     private String location;
+    private String pushId;
 
     public Item(String imageEncoded, String name, String price, String description, String phoneNumber, String location) {
 
@@ -72,5 +73,13 @@ public class Item {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }

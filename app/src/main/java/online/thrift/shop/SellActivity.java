@@ -87,10 +87,10 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
             String name = mItemName.getText().toString();
             String price = mItemPrice.getText().toString();
             String description = mItemDescription.getText().toString();
-            int phone_number = Integer.parseInt(mSellerPhone.getText().toString());
+            String phoneNumber = mSellerPhone.getText().toString();
             String location = mSellerLocation.getText().toString();
 
-            Item item = new Item( imageEncoded,  name,  price,  description,  phone_number,  location);
+            Item item = new Item( imageEncoded,  name,  price,  description,  phoneNumber,  location);
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference itemRef = database.getReference("items");
