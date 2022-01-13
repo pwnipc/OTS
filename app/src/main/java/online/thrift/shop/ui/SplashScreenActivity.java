@@ -11,13 +11,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-<<<<<<< HEAD:app/src/main/java/online/thrift/shop/SplashscreenActivity.java
-public class SplashscreenActivity extends AppCompatActivity {
-=======
 import online.thrift.shop.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
->>>>>>> 56255ae2527aaef212397064e4dec7777a51d1c2:app/src/main/java/online/thrift/shop/ui/SplashScreenActivity.java
 
     //variables
     Animation topAnim, bottomAnim;
@@ -48,7 +44,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashscreenActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
