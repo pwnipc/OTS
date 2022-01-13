@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +25,15 @@ import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     //variables
+    public static final String TAG = LoginActivity.class.getSimpleName();
+
     Button signup, loginBtn;
+
+    @BindView(R.id.signupBtn) Button mSignupButton;
+    @BindView(R.id.email)
+    EditText mEmailEdit;
+    @BindView(R.id.password) EditText mPassword;
+    @BindView(R.id.confirmPassword)
 
 
     private FirebaseAuth mAuth;
@@ -59,6 +68,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         };
+    }
+    private void loginWithPassword() {
+        String email = mEmailEdit.getText().toString().trim();
+        String password = mPassword.getText().toString().trim();
+        if (email.equals("")) {
+            mEmailEdit.setError("Please enter your  email");
+            return;
+        }
+        if (password.equals("")) {
+            mPassword.setError("Password cannot be blank");
+            return;
+        }
+
+
+        // mAuthProgressDialog.show();
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task ->  {
+                    Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                    if (!task.isSuccessful()) {
+                        Log.w(TAG, "signInWithEmail", task.getException());
+                        Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
     }
 
 

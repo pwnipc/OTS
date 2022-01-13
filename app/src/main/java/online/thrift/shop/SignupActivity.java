@@ -31,10 +31,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     TextInputLayout email, password, confirmPassword;
 
     @BindView(R.id.signupBtn) Button mSignupButton;
-    @BindView(R.id.email) TextInputLayout mEmailEdit;
-    @BindView(R.id.password) TextInputLayout mPassword;
+    @BindView(R.id.email) EditText mEmailEdit;
+    @BindView(R.id.password) EditText mPassword;
     @BindView(R.id.confirmPassword)
-    TextInputLayout mConfirmPassword;
+    EditText mConfirmPassword;
     @BindView(R.id.login)
     Button mLogin;
 
@@ -78,9 +78,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void createNewUser(){
-        final String email = mEmailEdit.toString().trim();
-        String password = mPassword.toString().trim();
-        String confirmPassword = mConfirmPassword.toString().trim();
+        final String email = mEmailEdit.getText().toString().trim();
+        String password = mPassword.getText().toString().trim();
+        String confirmPassword = mConfirmPassword.getText().toString().trim();
 
         boolean validEmail = isValidEmail(email);
         boolean validPassword = isValidPassword(password, confirmPassword);
