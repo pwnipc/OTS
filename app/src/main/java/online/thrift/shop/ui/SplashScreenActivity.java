@@ -11,7 +11,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import online.thrift.shop.LoginActivity;
 import online.thrift.shop.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
