@@ -22,18 +22,20 @@ import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import online.thrift.shop.ui.HomePageActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     //variables
     public static final String TAG = LoginActivity.class.getSimpleName();
 
-    Button signup, loginBtn;
+    // Button signup, loginBtn;
 
-    @BindView(R.id.signupBtn) Button mSignupButton;
-    @BindView(R.id.email)
-    EditText mEmailEdit;
+    @BindView(R.id.loginBtn) Button loginBtn;
+    @BindView(R.id.signup) Button mSignupButton;
+    @BindView(R.id.email) EditText mEmailEdit;
     @BindView(R.id.password) EditText mPassword;
-    @BindView(R.id.confirmPassword)
+    // @BindView(R.id.confirmPassword)
+
 
 
     private FirebaseAuth mAuth;
@@ -47,10 +49,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login_acivity);
         ButterKnife.bind(this);
-
-
         loginBtn.setOnClickListener(this);
-        signup.setOnClickListener(this);
+        mSignupButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
@@ -98,13 +98,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if (v == signup){
+        if (v == mSignupButton){
             Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         }else if(v == loginBtn){
-            //createNewUser();
+            loginWithPassword();
         }
 
     }

@@ -1,4 +1,4 @@
-package online.thrift.shop;
+package online.thrift.shop.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import online.thrift.shop.R;
+import online.thrift.shop.SignupActivity;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
     //variables
     public static final String TAG = SignupActivity.class.getSimpleName();
-    Button login, signupBtn;
+    //Button login, signupBtn;
     TextInputLayout email, password, confirmPassword;
 
     @BindView(R.id.signupBtn) Button mSignupButton;
@@ -46,9 +46,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         //This line will hide the status bar from the screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_signup);
-
         ButterKnife.bind(this);
 
         // Initializing Firebase
@@ -61,20 +59,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         mSignupButton.setOnClickListener(this);
 
 
-    }
-
-
-
-    @Override
-    public void onClick(View view) {
-        if (view == login) {
-            Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        }
-        if (view == signupBtn) {
-            createNewUser();
-        }
     }
 
     private void createNewUser(){
@@ -90,6 +74,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         Log.d(TAG, "Authentication successful");
+                        Toast.makeText(SignupActivity.this, "Authentication Successful",Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(SignupActivity.this, "authentication failed", Toast.LENGTH_SHORT).show();
                     }
@@ -97,13 +82,13 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private boolean isValidEmail(String email) {
-        boolean isGoodEmail =
-                (email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+        boolean isGoodEmail = (email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches());
         if (!isGoodEmail){
             mEmailEdit.setError("Please enter a valid email address");
             return false;
+        }else {
+            return  true;
         }
-        return isGoodEmail;
     }
 
     public boolean isValidPassword(String password, String confirmPassword) {
@@ -113,8 +98,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         } else if (!password.equals(confirmPassword)) {
             mPassword.setError("Passwords do not match");
             return false;
+        }else{
+            return true;
         }
-        return false;
+
     }
 
     public void createAuthStateListener(){
@@ -128,11 +115,23 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             }
         };
     }
+    @Override
+    public void onClick(View view) {
+        if (view == mLogin) {
+            Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+        if (view == mSignupButton) {
+            createNewUser();
+        }
+    }
+
 
     public void onStart() {
         super.onStart();
         //Checking if user is signed in (non-null) and update UI accordingly.
-       mAuth.addAuthStateListener(mAuthListener);
+        mAuth.addAuthStateListener(mAuthListener);
     }
     public void onStop() {
         super.onStop();
