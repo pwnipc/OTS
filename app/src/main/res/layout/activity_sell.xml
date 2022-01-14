@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,49 +8,60 @@
 
     <ImageView
         android:id="@+id/imageViewPhotoAdd"
-        android:layout_width="fill_parent"
-        android:layout_height="250dp"
-        android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/add_a_photo"
-        tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="11dp" />
+        android:layout_width="326dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/add_a_photo" />
 
     <EditText
         android:id="@+id/editTextItemName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="218dp"
+        android:layout_height="49dp"
         android:layout_below="@id/imageViewPhotoAdd"
         android:layout_alignParentLeft="true"
-        android:layout_marginRight="2dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#FFC107"
         android:ems="10"
         android:hint="Item Name"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPhotoAdd" />
 
     <EditText
         android:id="@+id/editTextItemPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="47dp"
         android:layout_below="@id/imageViewPhotoAdd"
-        android:gravity="right"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="2dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:layout_toLeftOf="@id/editTextItemName"
+        android:backgroundTint="#FFC107"
         android:ems="10"
         android:hint="Item Price"
-        android:inputType="number" />
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextItemName" />
 
     <EditText
         android:id="@+id/editTextDescription"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="310dp"
+        android:layout_height="131dp"
         android:layout_below="@id/editTextItemName"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:foregroundGravity="center_horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#FF9800"
         android:ems="10"
+        android:foregroundGravity="center_horizontal"
         android:gravity="start|top"
         android:hint="Item Description"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -58,29 +69,46 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextDescription"
         android:layout_alignParentLeft="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FF9800"
         android:ems="10"
         android:gravity="left"
         android:hint="Seller Phone eg 2547..."
-        android:inputType="phone" />
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextLocation" />
 
     <EditText
         android:id="@+id/editTextLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="216dp"
+        android:layout_height="47dp"
         android:layout_below="@id/editTextDescription"
         android:layout_alignParentRight="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FFC107"
         android:ems="10"
-        android:gravity="right"
         android:hint="Seller Location"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextItemPrice" />
 
     <Button
         android:id="@+id/buttonItemPost"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="338dp"
+        android:layout_height="43dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Post Item" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#FF9800"
+        android:text="Post Item"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescription" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
