@@ -100,7 +100,7 @@ public class FirebaseGoodViewHolder  extends RecyclerView.ViewHolder implements 
 
                 int itemPosition = getLayoutPosition();
 
-   //             Toast.makeText(mContext,items.get(itemPosition).getPhoneNumber(),Toast.LENGTH_SHORT).show();
+                //             Toast.makeText(mContext,items.get(itemPosition).getPhoneNumber(),Toast.LENGTH_SHORT).show();
 //                Intent intent = new Intent(mContext, HomePageActivity.class);
 //                intent.putExtra("position", itemPosition + "");
 //                intent.putExtra("items", Parcels.wrap(items));

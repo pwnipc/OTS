@@ -6,12 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -31,6 +33,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
     private DatabaseReference mItemReference;
     private FirebaseRecyclerAdapter<Item, FirebaseGoodViewHolder> mFirebaseAdapter;
+    private  Item item;
 
     @BindView(R.id.goodsRecyclerView)
     RecyclerView recyclerView;
@@ -42,6 +45,10 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     ImageView logout;
     @BindView(R.id.imageViewHome)
     ImageView home;
+//    @BindView(R.id.ChatTextView)
+//    TextView chatTextView;
+//    @BindView(R.id.ContactTextView)
+//    TextView contactTextView;
 
 //    ArrayList<good> mGoods;
 
@@ -56,6 +63,8 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         itemPost.setOnClickListener(this);
         logout.setOnClickListener(this);
         home.setOnClickListener(this);
+//        chatTextView.setOnClickListener(this);
+//        contactTextView.setOnClickListener(this);
 
 //        mItemReference = FirebaseDatabase.getInstance().getReference("items");
 //        setUpFirebaseAdapter();
@@ -69,16 +78,6 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         setUpFirebaseAdapter();
 
 
-//        mGoods = new ArrayList<>();
-//
-//        mGoods.add(new good("kes 800,000","2007 Honda fit",R.drawable.car,"Nairobi"));
-//        mGoods.add(new good("kes 20,000","LG door Fridge",R.drawable.fridge,"Mombasa"));
-//        mGoods.add(new good("kes 30,000","Samsung Android TV",R.drawable.tv,"Turkana"));
-//
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setHasFixedSize(true);
-//        goodsListAdapter goodsListAdapter = new goodsListAdapter(mGoods,HomePageActivity.this);
-//        recyclerView.setAdapter(goodsListAdapter);
 
     }
 
@@ -136,9 +135,12 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
-        }else if(view == home){
-            Toast.makeText(HomePageActivity.this,"This is home :-)",Toast.LENGTH_SHORT).show();
-
+        }else if(view == home) {
+            Toast.makeText(HomePageActivity.this, "This is home :-)", Toast.LENGTH_SHORT).show();
+        }
+//        } else if (view == contactTextView){
+//            Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
+//                    Uri.parse("tel:" + item.getPhoneNumber()));
+//            startActivity(phoneIntent);
         }
     }
-}
