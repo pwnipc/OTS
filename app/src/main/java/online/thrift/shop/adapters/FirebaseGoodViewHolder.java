@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,12 +46,34 @@ public class FirebaseGoodViewHolder  extends RecyclerView.ViewHolder implements 
         TextView nameTextView = (TextView) mView.findViewById(R.id.goodNametextView);
         TextView priceTextView = (TextView) mView.findViewById(R.id.PriceTextView);
         TextView LocationTextView = (TextView) mView.findViewById(R.id.LocationtextView);
+        TextView contactTextView = (TextView) itemView.findViewById(R.id.ContactTextView);
+        TextView chatTextView = (TextView) itemView.findViewById(R.id.ChatTextView);
 
         Bitmap imageBitmap = decodeFromFirebaseBase64(good.getImageEncoded());
         goodImageView.setImageBitmap(imageBitmap);
         nameTextView.setText(good.getName());
         priceTextView.setText(good.getPrice());
         LocationTextView.setText(good.getLocation());
+
+        contactTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent phoneIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + good.getPhoneNumber()));
+                mContext.startActivity(phoneIntent);
+            }
+        });
+
+        chatTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "https://api.whatsapp.com/send?phone=+"+good.getPhoneNumber()+"&text=Hi, i am interested in "+good.getName()+" on (O.T.S)";
+                Intent chat = new Intent(Intent.ACTION_VIEW);
+                chat.setData(Uri.parse(url));
+                mContext.startActivity(chat);
+
+            }
+        });
+
 
     }
 
@@ -76,11 +100,12 @@ public class FirebaseGoodViewHolder  extends RecyclerView.ViewHolder implements 
 
                 int itemPosition = getLayoutPosition();
 
-                Intent intent = new Intent(mContext, HomePageActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("items", Parcels.wrap(items));
-
-                mContext.startActivity(intent);
+   //             Toast.makeText(mContext,items.get(itemPosition).getPhoneNumber(),Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(mContext, HomePageActivity.class);
+//                intent.putExtra("position", itemPosition + "");
+//                intent.putExtra("items", Parcels.wrap(items));
+//
+//                mContext.startActivity(intent);
 
             }
 
