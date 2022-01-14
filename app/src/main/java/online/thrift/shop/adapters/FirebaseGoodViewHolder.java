@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,11 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.parceler.Parcels;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import online.thrift.shop.R;
 import online.thrift.shop.models.Item;
+import online.thrift.shop.models.good;
 import online.thrift.shop.ui.HomePageActivity;
 
 public class FirebaseGoodViewHolder  extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -44,32 +46,38 @@ public class FirebaseGoodViewHolder  extends RecyclerView.ViewHolder implements 
         TextView nameTextView = (TextView) mView.findViewById(R.id.goodNametextView);
         TextView priceTextView = (TextView) mView.findViewById(R.id.PriceTextView);
         TextView LocationTextView = (TextView) mView.findViewById(R.id.LocationtextView);
+        TextView contactTextView = (TextView) itemView.findViewById(R.id.ContactTextView);
+        TextView chatTextView = (TextView) itemView.findViewById(R.id.ChatTextView);
 
-      if (!good.getImageEncoded().contains("http")){
-
-          try {
-              Bitmap imageBitmap = decodeFromFirebaseBase64(good.getImageEncoded());
-              goodImageView.setImageBitmap(imageBitmap);
-          } catch (IOException e){
-              e.printStackTrace();
-          }
-      }else {
-
-          nameTextView.setText(good.getName());
-          priceTextView.setText(good.getPrice());
-          LocationTextView.setText(good.getLocation());
-
-      }
-
-
-
+        Bitmap imageBitmap = decodeFromFirebaseBase64(good.getImageEncoded());
+        goodImageView.setImageBitmap(imageBitmap);
         nameTextView.setText(good.getName());
         priceTextView.setText(good.getPrice());
         LocationTextView.setText(good.getLocation());
 
+        contactTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent phoneIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + good.getPhoneNumber()));
+                mContext.startActivity(phoneIntent);
+            }
+        });
+
+        chatTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "https://api.whatsapp.com/send?phone=+"+good.getPhoneNumber()+"&text=Hi, i am interested in "+good.getName()+" on (O.T.S)";
+                Intent chat = new Intent(Intent.ACTION_VIEW);
+                chat.setData(Uri.parse(url));
+                mContext.startActivity(chat);
+
+            }
+        });
+
+
     }
 
-    public static Bitmap decodeFromFirebaseBase64(String imageEncoded) throws IOException {
+    public static Bitmap decodeFromFirebaseBase64(String imageEncoded) {
 
         byte[] decodedByteArray = android.util.Base64.decode(imageEncoded, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(decodedByteArray,0,decodedByteArray.length);
@@ -88,16 +96,16 @@ public class FirebaseGoodViewHolder  extends RecyclerView.ViewHolder implements 
 
                     items.add(snapshot.getValue(Item.class));
 
-
                 }
 
                 int itemPosition = getLayoutPosition();
 
-                Intent intent = new Intent(mContext, HomePageActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("items", Parcels.wrap(items));
-
-                mContext.startActivity(intent);
+                //             Toast.makeText(mContext,items.get(itemPosition).getPhoneNumber(),Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(mContext, HomePageActivity.class);
+//                intent.putExtra("position", itemPosition + "");
+//                intent.putExtra("items", Parcels.wrap(items));
+//
+//                mContext.startActivity(intent);
 
             }
 

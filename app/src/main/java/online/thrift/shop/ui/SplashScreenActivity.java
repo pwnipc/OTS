@@ -16,7 +16,7 @@ import online.thrift.shop.R;
 public class SplashScreenActivity extends AppCompatActivity {
 
     //variables
-    Animation topAnim, bottomAnim;
+    Animation topAnim, bottomAnim, middleAnim;
     ImageView image;
     TextView logo, slogan;
 
@@ -28,6 +28,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         //Animation
         topAnim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
+        middleAnim = AnimationUtils.loadAnimation(this,R.anim.middle_animation);
         bottomAnim = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
 
 
