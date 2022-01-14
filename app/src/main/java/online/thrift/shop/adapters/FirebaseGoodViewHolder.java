@@ -25,7 +25,6 @@ import java.util.ArrayList;
 
 import online.thrift.shop.R;
 import online.thrift.shop.models.Item;
-import online.thrift.shop.models.good;
 import online.thrift.shop.ui.HomePageActivity;
 
 public class FirebaseGoodViewHolder  extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -88,6 +87,7 @@ public class FirebaseGoodViewHolder  extends RecyclerView.ViewHolder implements 
                 for (DataSnapshot snapshot: datasnapshot.getChildren() ){
 
                     items.add(snapshot.getValue(Item.class));
+
 
                 }
 
