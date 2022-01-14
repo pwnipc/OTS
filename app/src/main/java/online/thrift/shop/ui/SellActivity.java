@@ -1,7 +1,6 @@
-package online.thrift.shop;
+package online.thrift.shop.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,6 +14,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,8 +24,8 @@ import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import online.thrift.shop.R;
 import online.thrift.shop.models.Item;
-import online.thrift.shop.ui.HomePageActivity;
 
 public class SellActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int REQUEST_IMAGE_CAPTURE = 111;
@@ -92,9 +93,15 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
             String location = mSellerLocation.getText().toString();
 
             Item item = new Item( imageEncoded,  name,  price,  description,  phoneNumber,  location);
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+            DatabaseReference itemRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference("items")
+                    .child(uid);
 
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference itemRef = database.getReference("items");
+//            FirebaseDatabase database = FirebaseDatabase.getInstance();
+//            DatabaseReference itemRef = database.getReference("items");
             DatabaseReference pushRef = itemRef.push();
             String pushId = pushRef.getKey();
             item.setPushId(pushId);

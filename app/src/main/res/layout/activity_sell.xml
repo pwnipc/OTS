@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SellActivity">
+    tools:context=".ui.SellActivity">
 
     <ImageView
         android:id="@+id/imageViewPhotoAdd"
@@ -31,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageViewPhotoAdd"
+        android:gravity="right"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="2dp"
         android:layout_toLeftOf="@id/editTextItemName"
@@ -43,12 +44,13 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_below="@id/editTextItemName"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:foregroundGravity="center_horizontal"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine"
         android:hint="Item Description"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"/>
+        android:inputType="textMultiLine" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -58,7 +60,7 @@
         android:layout_alignParentLeft="true"
         android:ems="10"
         android:gravity="left"
-        android:hint="Seller Phone"
+        android:hint="Seller Phone eg 2547..."
         android:inputType="phone" />
 
     <EditText
@@ -68,7 +70,7 @@
         android:layout_below="@id/editTextDescription"
         android:layout_alignParentRight="true"
         android:ems="10"
-        android:gravity="left"
+        android:gravity="right"
         android:hint="Seller Location"
         android:inputType="textPersonName" />
 
